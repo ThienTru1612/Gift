@@ -1,110 +1,52 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Women's Day</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="./css/style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>8.3 | Massive Tulip Garden</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<!-- INTRO -->
-<div id="intro">
+    <div id="intro">
+        <div class="welcome-icon">🌷</div>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <p class="intro-text">PLANTING THE MASSIVE GARDEN...</p>
+    </div>
 
-<div class="welcome-icon">🌷</div>
+    <div id="main">
+        <canvas id="starsCanvas"></canvas>
+        <canvas id="sakuraCanvas"></canvas> 
+        
+        <div class="bouquet-container" id="bouquet">
+            <div class="tulip-row">
+                <span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+                <span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+                <span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+                <span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+                <span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+            </div>
+        </div>
 
-<div class="progress-bar">
-<div class="progress-fill"></div>
-</div>
+        <div class="envelope-wrapper" id="envelopeWrapper">
+            <div class="env-back"></div>
+            <div class="env-paper" id="envPaper">
+                <h1 id="wishTitle">Happy Women's Day</h1>
+                <h3 id="wishSubTitle">Gửi đến bạn</h3>
+                <div class="glow-line"></div>
+                <p id="typingText"></p>
+                <button class="close-btn" onclick="location.reload()">Đóng lại</button>
+            </div>
+            <div class="env-front"></div>
+            <div class="env-flap" id="envFlap"></div>
+            <p class="click-hint">✧ Chạm để mở ✧</p>
+        </div>
 
-<p class="intro-text">PLANTING THE MASSIVE GARDEN...</p>
+        <div class="footer-icon">✧</div>
+    </div>
 
-</div>
-
-
-<!-- MAIN -->
-<div id="main">
-
-<canvas id="starsCanvas"></canvas>
-<canvas id="sakuraCanvas"></canvas>
-
-
-<!-- TULIP GARDEN -->
-<div class="bouquet-container">
-
-<div class="tulip-row">
-
-🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷
-
-</div>
-
-</div>
-
-
-<!-- ENVELOPE -->
-<div class="envelope-wrapper" id="envelopeWrapper" onclick="openEnvelope()">
-
-<div class="env-back"></div>
-
-<div class="env-paper">
-
-<h1>Happy Women's Day</h1>
-
-<h3>Gửi đến Người phụ nữ tuyệt vời</h3>
-
-<div class="glow-line"></div>
-
-<p id="typingText"></p>
-
-<button class="close-btn" onclick="location.reload()">Đóng lại</button>
-
-</div>
-
-<div class="env-front"></div>
-<div class="env-flap"></div>
-
-<p class="click-hint">✧ Chạm để mở ✧</p>
-
-</div>
-
-</div>
-
-
-<script src="./js/stars.js" defer></script>
-<script src="./js/main.js" defer></script>
-
-<script>
-
-let isOpened = false;
-
-const message = "Thế giới này trở nên dịu dàng và ý nghĩa hơn nhờ có sự hiện diện của phái đẹp. Chúc bạn luôn rạng rỡ như những đóa hoa, tự tin tỏa sáng theo cách riêng và tận hưởng một ngày 8/3 trọn vẹn yêu thương!";
-
-function openEnvelope(){
-
-if(isOpened) return;
-
-isOpened = true;
-
-const env = document.getElementById('envelopeWrapper');
-
-env.classList.add('open');
-
-burstSakura();
-
-setTimeout(()=>{
-startTyping(message);
-},800);
-
-}
-
-</script>
-
+    <script src="js/stars.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
