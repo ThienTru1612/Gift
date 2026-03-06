@@ -1,3 +1,5 @@
+window.addEventListener("DOMContentLoaded", () => {
+
 const canvas = document.getElementById("starsCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -9,11 +11,9 @@ let stars = [];
 for(let i=0;i<120;i++){
 
 stars.push({
-
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
 r:Math.random()*1.5
-
 });
 
 }
@@ -37,3 +37,5 @@ requestAnimationFrame(draw);
 }
 
 draw();
+
+});
