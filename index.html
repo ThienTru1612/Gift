@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,49 +14,44 @@
 
 <body>
 
+<!-- INTRO -->
 <div id="intro">
 <div class="welcome-icon">🌷</div>
-<div class="progress-bar"><div class="progress-fill"></div></div>
+
+<div class="progress-bar">
+<div class="progress-fill"></div>
+</div>
+
 <p class="intro-text">PLANTING THE MASSIVE GARDEN...</p>
 </div>
 
+
+<!-- MAIN -->
 <div id="main">
 
 <canvas id="starsCanvas"></canvas>
 <canvas id="sakuraCanvas"></canvas>
 
+<!-- VƯỜN TULIP -->
 <div class="bouquet-container" id="bouquet">
 
 <div class="tulip-row">
 
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
-<span class="tulip">🌷</span>
+<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
 
 </div>
 
 </div>
 
+
+<!-- ENVELOPE -->
 <div class="envelope-wrapper" id="envelopeWrapper" onclick="openEnvelope()">
 
 <div class="env-back"></div>
@@ -66,7 +60,7 @@
 
 <h1>Happy Women's Day</h1>
 
-<h3>Gửi đến người phụ nữ tuyệt vời</h3>
+<h3>Gửi đến Người phụ nữ tuyệt vời</h3>
 
 <div class="glow-line"></div>
 
@@ -84,12 +78,44 @@
 
 </div>
 
+
 <div class="footer-icon">✧</div>
 
 </div>
 
+
 <script src="js/stars.js"></script>
 <script src="js/main.js"></script>
+
+
+<script>
+
+const message = "Thế giới này trở nên dịu dàng và ý nghĩa hơn nhờ có sự hiện diện của phái đẹp. Chúc bạn luôn rạng rỡ như những đóa hoa, tự tin tỏa sáng theo cách riêng và tận hưởng một ngày 8/3 trọn vẹn yêu thương!";
+
+function openEnvelope(){
+
+if(isOpened) return;
+
+isOpened = true;
+
+const env = document.getElementById('envelopeWrapper');
+
+env.classList.remove('float');
+
+env.classList.add('open');
+
+burstSakura();
+
+setTimeout(()=>{
+
+startTyping(message);
+
+},1000);
+
+}
+
+</script>
+
 
 </body>
 </html>
