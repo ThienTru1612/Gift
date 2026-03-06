@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,7 +9,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="./css/style.css">
 
 </head>
 
@@ -16,6 +17,7 @@
 
 <!-- INTRO -->
 <div id="intro">
+
 <div class="welcome-icon">🌷</div>
 
 <div class="progress-bar">
@@ -23,6 +25,7 @@
 </div>
 
 <p class="intro-text">PLANTING THE MASSIVE GARDEN...</p>
+
 </div>
 
 
@@ -32,19 +35,13 @@
 <canvas id="starsCanvas"></canvas>
 <canvas id="sakuraCanvas"></canvas>
 
-<!-- VƯỜN TULIP -->
-<div class="bouquet-container" id="bouquet">
+
+<!-- TULIP GARDEN -->
+<div class="bouquet-container">
 
 <div class="tulip-row">
 
-<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
-<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
-<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
-<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
-<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
-<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
-<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
-<span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span>
+🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷
 
 </div>
 
@@ -71,24 +68,21 @@
 </div>
 
 <div class="env-front"></div>
-
 <div class="env-flap"></div>
 
 <p class="click-hint">✧ Chạm để mở ✧</p>
 
 </div>
 
-
-<div class="footer-icon">✧</div>
-
 </div>
 
 
-<script src="js/stars.js"></script>
-<script src="js/main.js"></script>
-
+<script src="./js/stars.js" defer></script>
+<script src="./js/main.js" defer></script>
 
 <script>
+
+let isOpened = false;
 
 const message = "Thế giới này trở nên dịu dàng và ý nghĩa hơn nhờ có sự hiện diện của phái đẹp. Chúc bạn luôn rạng rỡ như những đóa hoa, tự tin tỏa sáng theo cách riêng và tận hưởng một ngày 8/3 trọn vẹn yêu thương!";
 
@@ -100,22 +94,17 @@ isOpened = true;
 
 const env = document.getElementById('envelopeWrapper');
 
-env.classList.remove('float');
-
 env.classList.add('open');
 
 burstSakura();
 
 setTimeout(()=>{
-
 startTyping(message);
-
-},1000);
+},800);
 
 }
 
 </script>
-
 
 </body>
 </html>
