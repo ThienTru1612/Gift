@@ -1,20 +1,16 @@
 let isOpened = false;
 
-/* INTRO LOADING */
-
-window.onload = () => {
+window.addEventListener("load", () => {
 
 setTimeout(()=>{
 
 document.getElementById("intro").style.display="none";
 document.getElementById("main").style.display="block";
 
-},3000);
+},2500);
 
-}
+});
 
-
-/* TYPEWRITER */
 
 function startTyping(text){
 
@@ -24,12 +20,13 @@ let i=0;
 
 function type(){
 
-if(i < text.length){
+if(i<text.length){
 
 el.innerHTML += text.charAt(i);
+
 i++;
 
-setTimeout(type,35);
+setTimeout(type,30);
 
 }
 
@@ -40,7 +37,6 @@ type();
 }
 
 
-/* SAKURA BURST */
 
 function burstSakura(){
 
@@ -50,19 +46,17 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let petals = [];
+let petals=[];
 
 for(let i=0;i<40;i++){
 
 petals.push({
-
 x:window.innerWidth/2,
 y:window.innerHeight/2,
-vx:(Math.random()-0.5)*4,
-vy:(Math.random()-0.5)*4,
-size:8+Math.random()*6
-
-})
+vx:(Math.random()-0.5)*6,
+vy:(Math.random()-0.5)*6,
+size:6+Math.random()*6
+});
 
 }
 
@@ -75,7 +69,8 @@ petals.forEach(p=>{
 p.x+=p.vx;
 p.y+=p.vy;
 
-ctx.fillStyle="pink";
+ctx.fillStyle="#ffc0cb";
+
 ctx.beginPath();
 ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
 ctx.fill();
