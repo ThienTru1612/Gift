@@ -1,73 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
+const canvas = document.getElementById("starsCanvas");
+const ctx = canvas.getContext("2d");
 
-    /* ================= LOADING ================= */
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    const loading = document.getElementById("loading");
+let stars = [];
 
-    window.addEventListener("load", () => {
-        setTimeout(() => {
-            loading.style.display = "none";
-        }, 800);
-    });
+for(let i=0;i<120;i++){
 
-    /* ================= STARS BACKGROUND ================= */
+stars.push({
 
-    const starContainer = document.getElementById("stars");
-
-    for(let i = 0; i < 120; i++){
-
-        const star = document.createElement("div");
-
-        star.style.position = "absolute";
-        star.style.width = "2px";
-        star.style.height = "2px";
-        star.style.background = "white";
-
-        star.style.left = Math.random()*100 + "%";
-        star.style.top = Math.random()*100 + "%";
-
-        star.style.opacity = Math.random();
-
-        star.style.animation = "twinkle " + (Math.random()*3+2) + "s infinite";
-
-        starContainer.appendChild(star);
-    }
-
-    /* ================= OPEN LETTER ================= */
-
-    const envelope = document.querySelector(".envelope");
-
-    envelope.addEventListener("click", () => {
-
-        envelope.classList.toggle("open");
-
-        createSakura();
-
-    });
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.5
 
 });
 
+}
 
-/* ================= SAKURA EFFECT ================= */
+function draw(){
 
-function createSakura(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    for(let i = 0; i < 25; i++){
+ctx.fillStyle="white";
 
-        const sakura = document.createElement("div");
+stars.forEach(s=>{
 
-        sakura.classList.add("sakura");
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fill();
 
-        sakura.style.left = Math.random()*100 + "vw";
+});
 
-        sakura.style.animationDuration = (Math.random()*5+5) + "s";
-
-        document.body.appendChild(sakura);
-
-        setTimeout(()=>{
-            sakura.remove();
-        },8000);
-
-    }
+requestAnimationFrame(draw);
 
 }
+
+draw();
