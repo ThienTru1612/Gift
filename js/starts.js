@@ -1,64 +1,73 @@
-function initStars() {
+document.addEventListener("DOMContentLoaded", function () {
 
-    const canvas = document.getElementById('starsCanvas');
-    if (!canvas) return;
+    /* ================= LOADING ================= */
 
-    const ctx = canvas.getContext('2d');
+    const loading = document.getElementById("loading");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            loading.style.display = "none";
+        }, 800);
+    });
 
-    const stars = [];
-    const numStars = 250;
+    /* ================= STARS BACKGROUND ================= */
 
-    for (let i = 0; i < numStars; i++) {
+    const starContainer = document.getElementById("stars");
 
-        stars.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 1.5,
-            alpha: Math.random(),
-            speed: Math.random() * 0.02 + 0.005
-        });
+    for(let i = 0; i < 120; i++){
 
+        const star = document.createElement("div");
+
+        star.style.position = "absolute";
+        star.style.width = "2px";
+        star.style.height = "2px";
+        star.style.background = "white";
+
+        star.style.left = Math.random()*100 + "%";
+        star.style.top = Math.random()*100 + "%";
+
+        star.style.opacity = Math.random();
+
+        star.style.animation = "twinkle " + (Math.random()*3+2) + "s infinite";
+
+        starContainer.appendChild(star);
     }
 
-    function draw() {
+    /* ================= OPEN LETTER ================= */
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const envelope = document.querySelector(".envelope");
 
-        ctx.fillStyle = "#ffffff";
+    envelope.addEventListener("click", () => {
 
-        stars.forEach(s => {
+        envelope.classList.toggle("open");
 
-            ctx.globalAlpha = s.alpha;
+        createSakura();
 
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-            ctx.fill();
-
-            s.alpha += s.speed;
-
-            if (s.alpha >= 1 || s.alpha <= 0) {
-                s.speed = -s.speed;
-            }
-
-        });
-
-        requestAnimationFrame(draw);
-
-    }
-
-    draw();
-}
-
-window.addEventListener('resize', () => {
-
-    const canvas = document.getElementById('starsCanvas');
-
-    if(canvas) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
+    });
 
 });
+
+
+/* ================= SAKURA EFFECT ================= */
+
+function createSakura(){
+
+    for(let i = 0; i < 25; i++){
+
+        const sakura = document.createElement("div");
+
+        sakura.classList.add("sakura");
+
+        sakura.style.left = Math.random()*100 + "vw";
+
+        sakura.style.animationDuration = (Math.random()*5+5) + "s";
+
+        document.body.appendChild(sakura);
+
+        setTimeout(()=>{
+            sakura.remove();
+        },8000);
+
+    }
+
+}
