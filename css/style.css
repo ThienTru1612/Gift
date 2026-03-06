@@ -1,202 +1,117 @@
-:root {
-    --pink: #ff1a66;     
-    --gold: #d4a373;     
-    --gold-bright: #ffd700; 
-    --green-sea: #2e8b57; 
-    --bg: #050505;       
-    --glass: rgba(10, 10, 10, 0.9);
-
-    --env-back: #e09f9f;
-    --env-front: #c47c7c;
-    --env-flap: #d88e8e;
-    --paper-bg: #fffbf0; 
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
-
-html, body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: var(--bg);
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background:#020111;
+    overflow-x:hidden;
+    color:white;
 }
 
-/* INTRO */
-#intro {
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-    background: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: 1.5s ease-in-out;
+/* ================= LOADING ================= */
+
+#loading{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#020111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
 }
 
-.welcome-icon {
-    font-size: clamp(50px, 8vw, 70px);
-    animation: pulseHint 1.5s infinite;
-    color: var(--pink);
+.loader{
+    width:60px;
+    height:60px;
+    border:6px solid #fff;
+    border-top:6px solid transparent;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
 }
 
-.progress-bar {
-    width: clamp(150px, 30vw, 180px);
-    height: 2px;
-    background: #222;
-    margin: 30px 0 35px 0;
-    position: relative;
-    overflow: hidden;
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
 }
 
-.progress-fill {
-    position: absolute;
-    height: 100%;
-    background: var(--pink);
-    width: 0%;
-    animation: loading 3s forwards cubic-bezier(0.22, 0.61, 0.36, 1);
+/* ================= STAR BACKGROUND ================= */
+
+#stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
 }
 
-.intro-text {
-    font-size: clamp(0.7rem, 2vw, 0.8rem);
-    letter-spacing: 3px;
-    color: #999;
+/* ================= ENVELOPE ================= */
+
+.container{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-/* MAIN SCENE */
-#main {
-    opacity: 0;
-    transition: opacity 2s;
-    position: relative;
-    width: 100%;
-    height: 100%;
+.envelope{
+    width:300px;
+    height:200px;
+    background:#ffcad4;
+    position:relative;
+    cursor:pointer;
+    transition:0.5s;
 }
 
-#starsCanvas,
-#sakuraCanvas {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
+.envelope:before{
+    content:"";
+    position:absolute;
+    top:-100px;
+    left:0;
+    border-left:150px solid transparent;
+    border-right:150px solid transparent;
+    border-bottom:100px solid #ffafcc;
 }
 
-#sakuraCanvas {
-    z-index: 150;
+/* ================= LETTER ================= */
+
+.letter{
+    position:absolute;
+    width:260px;
+    height:160px;
+    background:white;
+    top:20px;
+    left:20px;
+    padding:20px;
+    transform:translateY(0);
+    transition:0.6s;
 }
 
-/* TULIP GARDEN */
-
-.bouquet-container {
-    position: absolute;
-    bottom: -20vh;
-    left: 0;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    z-index: 50;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 2s, bottom 2s cubic-bezier(0.22, 1, 0.36, 1);
+.envelope.open .letter{
+    transform:translateY(-180px);
 }
 
-.bouquet-container.active {
-    opacity: 1;
-    bottom: -2vh;
+/* ================= SAKURA ================= */
+
+.sakura{
+    position:fixed;
+    top:-20px;
+    width:15px;
+    height:15px;
+    background:pink;
+    border-radius:50%;
+    opacity:0.8;
+    animation:fall linear infinite;
 }
 
-.tulip-row {
-    display: flex;
-    width: 120vw;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.tulip {
-    display: inline-block;
-    line-height: 1;
-    margin: 0 -1.5vw;
-}
-
-.tulip:nth-child(2n) {
-    font-size: 8vh;
-}
-
-.tulip:nth-child(3n) {
-    font-size: 14vh;
-}
-
-.tulip:nth-child(4n) {
-    font-size: 18vh;
-}
-
-.tulip:nth-child(5n) {
-    font-size: 22vh;
-}
-
-.tulip:nth-child(7n) {
-    font-size: 12vh;
-}
-
-.tulip:nth-child(11n) {
-    font-size: 26vh;
-}
-
-/* ENVELOPE */
-
-.envelope-wrapper {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-8deg);
-    width: clamp(180px, 20vw, 240px);
-    height: clamp(120px, 13vw, 160px);
-    z-index: 100;
-    cursor: pointer;
-    display: none;
-}
-
-.env-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--env-back);
-}
-
-.env-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--env-front);
-}
-
-.env-flap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--env-flap);
-}
-
-.env-paper {
-    position: absolute;
-    background: var(--paper-bg);
-    padding: 20px;
-    text-align: center;
-}
-
-#typingText {
-    line-height: 1.6;
-    color: #4e342e;
-}
-
-/* ANIMATION */
-
-@keyframes loading {
-    to { width: 100%; }
-}
-
-@keyframes pulseHint {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
 }
