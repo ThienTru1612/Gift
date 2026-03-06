@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Women's Day</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div id="intro">
+<div class="welcome-icon">🌷</div>
+<div class="progress-bar">
+<div class="progress-fill"></div>
+</div>
+<p class="intro-text">PLANTING THE MASSIVE GARDEN...</p>
+</div>
+
+<div id="main">
+
+<canvas id="starsCanvas"></canvas>
+<canvas id="sakuraCanvas"></canvas>
+
+<div class="bouquet-container" id="bouquet">
+<div class="tulip-row">
+
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+<span class="tulip">🌷</span>
+
+</div>
+</div>
+
+
+<div class="envelope-wrapper" id="envelopeWrapper" onclick="openEnvelope()">
+
+<div class="env-back"></div>
+
+<div class="env-paper">
+
+<h1 id="title"></h1>
+<h3 id="subtitle"></h3>
+
+<div class="glow-line"></div>
+
+<p id="typingText"></p>
+
+<button class="close-btn" onclick="location.reload()">Đóng lại</button>
+
+</div>
+
+<div class="env-front"></div>
+<div class="env-flap"></div>
+
+<p class="click-hint">✧ Chạm để mở ✧</p>
+
+</div>
+
+<div class="footer-icon">✧</div>
+
+</div>
+
+<script src="js/stars.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
